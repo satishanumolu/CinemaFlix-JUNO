@@ -7,12 +7,14 @@
     angular.module('cinema-flix')
         .controller('ModalController', ModalController);
 
-    ModalController.$inject=['$uibModalInstance','movie','movieService','$filter']
-    function ModalController($uibModalInstance,movie,movieService,$filter){
+    ModalController.$inject=['$uibModalInstance','movie','title','btnTxt','movieService','$filter']
+    function ModalController($uibModalInstance,movie,title,btnTxt,movieService,$filter){
 
         var modalVm = this;
 
         modalVm.movie = movie;
+        modalVm.title = title;
+        modalVm.btnTxt = btnTxt;
         modalVm.close = close;
         modalVm.movieAlreadyExists = false;
         modalVm.movieNotFound = false;
@@ -63,20 +65,33 @@
         function updateMovie(isValid) {
 
             if(isValid) {
+
                 modalVm.movie.released = $filter('date')(modalVm.movie.released,'dd MMM yyyy');
-                movieService
-                    .updateMovie(modalVm.movie.movieID, modalVm.movie)
-                    .then(function (data) {
-                        close();
-                    }, function (errorData) {
-                        console.log(errorData);
-                        if(errorData == 404) {
-                            modalVm.movieNotFound = true;
-                        }
-                        else {
+                if(modalVm.btnTxt=="Update"){
+
+                    movieService
+                        .updateMovie(modalVm.movie.movieID, modalVm.movie)
+                        .then(function (data) {
+                            close();
+                        }, function (errorData) {
+                            console.log(errorData);
+                            if(errorData == 404) {
+                                modalVm.movieNotFound = true;
+                            }
+                            else {
+                                modalVm.movieAlreadyExists = true;
+                            }
+                        });
+                }
+                else{
+                    movieService
+                        .addMovie(modalVm.movie)
+                        .then(function (data) {
+                            close();
+                        }, function (errorData) {
                             modalVm.movieAlreadyExists = true;
-                        }
-                    });
+                        });
+                }
             }
         }
 

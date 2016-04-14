@@ -5,11 +5,12 @@
         .module('cinema-flix')
         .controller('UserController',UserController);
 
-    UserController.$inject = ['userService','$state','$sessionStorage'];
-    function UserController(userService,$state,$sessionStorage){
+    UserController.$inject = ['$rootScope','userService','$state','$sessionStorage'];
+    function UserController($rootScope,userService,$state,$sessionStorage){
 
         var userVm = this;
 
+        $rootScope.signOutFlag = false;
         userVm.userNotFound = false;
         userVm.userAlreadyExists = false;
         userVm.signIn = signIn;
