@@ -8,11 +8,12 @@
         .module('cinema-flix')
         .controller('HeaderController', HeaderController);
 
-    HeaderController.$inject = ['$sessionStorage','$state'];
-    function HeaderController($sessionStorage,$state) {
+    HeaderController.$inject = ['$rootScope','$sessionStorage','$state'];
+    function HeaderController($rootScope,$sessionStorage,$state) {
 
         var headerVm = this;
 
+        $rootScope.signOutFlag = false;
         headerVm.signOut = signOut;
         headerVm.home = home;
 

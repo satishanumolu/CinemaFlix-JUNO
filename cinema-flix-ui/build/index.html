@@ -7,15 +7,15 @@
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel="stylesheet" type="text/css">
 
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- endinject -->
     <!-- vendor.min:css -->
-    <link rel="stylesheet" href="styles/vendor.min.css">
     <!-- endinject -->
 
     <!-- inject:css -->
+    <link rel="stylesheet" href="styles/style.css">
     <!-- endinject -->
     <!-- app.min:css -->
-    <link rel="stylesheet" href="styles/app.min.css">
     <!-- endinject -->
 
 </head>
@@ -25,15 +25,32 @@
     <footer ng-include="'app/views/footer.tmpl.html'"></footer>
 
     <!-- bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-moment/angular-moment.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <!-- endinject -->
     <!-- vendor.min:js -->
-    <script src="scripts/vendor.min.js"></script>
     <!-- endinject -->
 
     <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/services/user.service.js"></script>
+    <script src="app/services/movie.service.js"></script>
+    <script src="app/services/comment.service.js"></script>
+    <script src="app/controllers/user.controller.js"></script>
+    <script src="app/controllers/movie.controller.js"></script>
+    <script src="app/controllers/movie-details.controller.js"></script>
+    <script src="app/controllers/modal.controller.js"></script>
+    <script src="app/controllers/header.controller.js"></script>
+    <script src="app/app.constant.js"></script>
     <!-- endinject -->
     <!-- app.min:js -->
-    <script src="scripts/app.min.js"></script>
     <!-- endinject -->
 </body>
 </html>

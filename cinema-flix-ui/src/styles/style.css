@@ -360,7 +360,7 @@ ul.nav-tabs.nav-justified>.active>a, ul.nav-tabs.nav-justified>.active>a:hover {
     padding-top: 8px;
     padding-bottom: 6px;
     background: #f0ad4e;
-    border: 2px solid #999;
+    border: 0px solid #999;
 }
 .datePicker:hover {
     background: #f0ad4e;

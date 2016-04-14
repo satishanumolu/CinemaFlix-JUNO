@@ -8,10 +8,12 @@
     angular.module('cinema-flix')
         .controller('MovieController',MovieController);
 
-    MovieController.$inject = ['movieService','$state','$sessionStorage','$uibModal'];
-    function MovieController(movieService,$state,$sessionStorage,$uibModal){
+    MovieController.$inject = ['$rootScope','movieService','$state','$sessionStorage','$uibModal'];
+    function MovieController($rootScope,movieService,$state,$sessionStorage,$uibModal){
 
         var movieVm = this;
+
+        $rootScope.signOutFlag = true;
 
         movieVm.sort = sort;
         movieVm.sortOrderChange = sortOrderChange;
@@ -93,6 +95,12 @@
                 resolve: {
                     movie: function(){
                         return movie;
+                    },
+                    title: function(){
+                        return "Delete Movie";
+                    },
+                    btnTxt: function(){
+                        return "Delete";
                     }
                 }
             });
@@ -110,6 +118,12 @@
                 resolve: {
                     movie: function(){
                         return movie;
+                    },
+                    title: function(){
+                        return "Update Movie";
+                    },
+                    btnTxt: function(){
+                        return "Update";
                     }
                 }
             });
@@ -122,11 +136,17 @@
         function addMovie(movie){
 
             var modalInstance = $uibModal.open({
-                templateUrl: 'app/views/add-movie.tmpl.html',
+                templateUrl: 'app/views/update-movie.tmpl.html',
                 controller: 'ModalController as modalVm',
                 resolve: {
                     movie: function(){
                         return movie;
+                    },
+                    title: function(){
+                        return "Add a Movie";
+                    },
+                    btnTxt: function(){
+                        return "Add";
                     }
                 }
             });

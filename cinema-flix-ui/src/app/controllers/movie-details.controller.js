@@ -8,10 +8,10 @@
       .module('cinema-flix')
       .controller('MovieDetailController',MovieDetailController);
 
-    MovieDetailController.$inject = ['$state','$stateParams','movieService','commentService','$sessionStorage']
-    function MovieDetailController($state,$stateParams,movieService,commentService,$sessionStorage){
+    MovieDetailController.$inject = ['$rootScope','$state','$stateParams','movieService','commentService','$sessionStorage']
+    function MovieDetailController($rootScope,$state,$stateParams,movieService,commentService,$sessionStorage){
         var movieDetailVm = this;
-
+        $rootScope.signOutFlag = true;
         movieDetailVm.title = $stateParams.title;
         movieDetailVm.user = $sessionStorage.user;
         movieDetailVm.updateRating = updateRating;

@@ -2,9 +2,9 @@
     <button ng-click="modalVm.close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-    <h3 class="modal-title update">Update Movie</h3>
+    <h3 class="modal-title addMovie">{{modalVm.title}}</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body" >
     <form name="movieUpdateForm" novalidate>
         <div class="row">
             <div class="col-sm-4">
@@ -145,14 +145,14 @@
                 </div>
             </div>
         </div>
-        <div class="error">
-            <p  ng-show="modalVm.movieAlreadyExists">Movie is already there in the catalog with this name</p>
-            <p  ng-show="modalVm.movieNotFound">There is no Movie with this name in the catalog</p>
-        </div>
     </form>
+    <div class="error">
+        <p  ng-show="modalVm.movieAlreadyExists">Movie is already there in the catalog with this name</p>
+        <p  ng-show="modalVm.movieNotFound">There is no Movie with this name in the catalog</p>
+    </div>
 </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-disabled="movieUpdateForm.$invalid" ng-click="modalVm.updateMovie(movieUpdateForm.$valid)">Update</button>
+    <button class="btn btn-primary" ng-click="modalVm.updateMovie(movieUpdateForm.$valid)">{{modalVm.btnTxt}}</button>
     <button class="btn btn-warning" ng-click="modalVm.close()">Cancel</button>
 </div>
